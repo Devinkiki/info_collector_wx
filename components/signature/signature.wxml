@@ -1,0 +1,8 @@
+<canvas 
+  type="2d" 
+  id="signatureCanvas"
+  bindtouchstart="onTouchStart"
+  bindtouchmove="onTouchMove"
+  bindtouchend="onTouchEnd"
+  style="width: 100%; height: 200px;"
+></canvas> 

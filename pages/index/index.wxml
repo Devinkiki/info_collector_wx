@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="form-group">
+    <text class="label">姓名：</text>
+    <input type="text" model:value="{{name}}" placeholder="请输入姓名" />
+  </view>
+  
+  <view class="form-group">
+    <text class="label">手机：</text>
+    <input type="number" model:value="{{phone}}" placeholder="请输入手机号" />
+  </view>
+  
+  <view class="form-group">
+    <text class="label">留言：</text>
+    <textarea model:value="{{message}}" placeholder="请输入留言内容"></textarea>
+  </view>
+  
+  <view class="form-group">
+    <text class="label">图片：</text>
+    <view class="upload-box" bindtap="chooseImage" wx:if="{{!imageUrl}}">
+      <text class="upload-tip">点击上传图片</text>
+    </view>
+    <image wx:else src="{{imageUrl}}" mode="aspectFit" class="preview-image" bindtap="previewImage"/>
+  </view>
+  
+  <view class="form-group">
+    <text class="label">签名：</text>
+    <signature id="signature" bind:signed="onSigned"/>
+  </view>
+  
+  <button class="submit-btn" bindtap="submitForm">提交信息</button>
+  
+  <view class="submission-list" wx:if="{{submissions.length > 0}}">
+    <text class="section-title">已提交信息</text>
+    <view class="submission-item" wx:for="{{submissions}}" wx:key="index">
+      <view class="info-row">姓名：{{item.name}}</view>
+      <view class="info-row">电话：{{item.phone}}</view>
+      <view class="info-row">留言：{{item.message}}</view>
+      <image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" mode="aspectFit" class="submission-image"/>
+      <image wx:if="{{item.signature}}" src="{{item.signature}}" mode="aspectFit" class="submission-signature"/>
+      <view class="info-row">提交时间：{{item.timestamp}}</view>
+    </view>
+  </view>
+</view> 
